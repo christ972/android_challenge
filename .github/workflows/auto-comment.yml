@@ -27,6 +27,10 @@ jobs:
           git add .
           git commit -m "Add temporary comment"
 
+      - name: Pull latest changes
+        run: |
+          git pull origin main  # or your default branch
+
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
@@ -40,6 +44,10 @@ jobs:
         run: |
           git add .
           git commit -m "Remove temporary comment"
+
+      - name: Pull latest changes again
+        run: |
+          git pull origin main  # or your default branch
 
       - name: Push removal
         uses: ad-m/github-push-action@v0.6.0
