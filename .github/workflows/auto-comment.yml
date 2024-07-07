@@ -18,7 +18,7 @@ jobs:
       - name: Add comment
         run: |
           echo "// Temporary comment" >> temp_comment.txt
-          cat temp_comment.txt >> path/to/your/file.js  # Adjust the path and file accordingly
+          cat temp_comment.txt >> file.txt  # Adjust the path and file accordingly
 
       - name: Commit changes
         run: |
