@@ -13,12 +13,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to v3 for Node.js 16 and 20 compatibility
 
       - name: Add comment
         run: |
           echo "// Temporary comment" >> temp_comment.txt
-          cat temp_comment.txt >> file.txt  # Adjust the path and file accordingly
+          cat temp_comment.txt >> file.txt  # Assuming file.txt is at the repository root
 
       - name: Commit changes
         run: |
@@ -30,11 +30,11 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Remove comment
         run: |
-          sed -i '/Temporary comment/d' path/to/your/file.js  # Adjust the path and file accordingly
+          sed -i '/Temporary comment/d' file.txt  # Assuming file.txt is at the repository root
 
       - name: Commit removal
         run: |
@@ -44,4 +44,4 @@ jobs:
       - name: Push removal
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
