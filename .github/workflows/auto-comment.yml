@@ -15,6 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3  # Updated to v3 for Node.js 16 and 20 compatibility
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Add comment
         run: |
           echo "// Temporary comment" >> temp_comment.txt
@@ -22,14 +27,12 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
           git commit -m "Add temporary comment"
 
       - name: Pull latest changes
         run: |
-          git pull origin main  # or your default branch
+          git pull --rebase origin main  # or your default branch
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
@@ -47,7 +50,7 @@ jobs:
 
       - name: Pull latest changes again
         run: |
-          git pull origin main  # or your default branch
+          git pull --rebase origin main  # or your default branch
 
       - name: Push removal
         uses: ad-m/github-push-action@v0.6.0
