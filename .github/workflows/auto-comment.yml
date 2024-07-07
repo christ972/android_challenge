@@ -2,10 +2,10 @@ name: Auto Comment
 
 on:
   schedule:
-    - cron: '0 * * * *'  # This runs the job every hour
+    - cron: '0 * * * *'  # Exécute le job toutes les heures
   push:
     branches:
-      - main  # or your default branch
+      - main  # ou votre branche par défaut
 
 jobs:
   update-comment:
@@ -13,26 +13,30 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Updated to v3 for Node.js 16 and 20 compatibility
+        uses: actions/checkout@v3  # Mis à jour pour Node.js 16 et 20
 
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+      - name: Pull latest changes
+        run: |
+          git pull --rebase origin main  # ou votre branche par défaut
+
       - name: Add comment
         run: |
           echo "// Temporary comment" >> temp_comment.txt
-          cat temp_comment.txt >> file.txt  # Assuming file.txt is at the repository root
+          cat temp_comment.txt >> file.txt  # Ajustez le chemin et le fichier en conséquence
 
       - name: Commit changes
         run: |
           git add .
           git commit -m "Add temporary comment"
 
-      - name: Pull latest changes
+      - name: Pull latest changes again
         run: |
-          git pull --rebase origin main  # or your default branch
+          git pull --rebase origin main  # ou votre branche par défaut
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
@@ -41,7 +45,7 @@ jobs:
 
       - name: Remove comment
         run: |
-          sed -i '/Temporary comment/d' file.txt  # Assuming file.txt is at the repository root
+          sed -i '/Temporary comment/d' file.txt  # Ajustez le chemin et le fichier en conséquence
 
       - name: Commit removal
         run: |
@@ -50,7 +54,7 @@ jobs:
 
       - name: Pull latest changes again
         run: |
-          git pull --rebase origin main  # or your default branch
+          git pull --rebase origin main  # ou votre branche par défaut
 
       - name: Push removal
         uses: ad-m/github-push-action@v0.6.0
