@@ -1,4 +1,4 @@
-name: Auto Comment
+name: Auto Comment Workflow
 
 on:
   schedule:
@@ -19,6 +19,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin git@github.com:christ972/android_challenge.git  # Utilisation de SSH
 
       - name: Pull latest changes
         run: |
