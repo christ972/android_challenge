@@ -24,8 +24,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'Your Name'  # Remplacez par votre nom
+          git config --global user.email 'your.email@example.com'  # Remplacez par votre email
           git remote set-url origin git@github.com:christ972/android_challenge.git  # Utilisation de SSH
 
       - name: Pull latest changes
@@ -47,4 +47,3 @@ jobs:
       - name: Push changes
         run: |
           git push origin main  # ou votre branche par défaut
-
