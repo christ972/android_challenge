@@ -29,8 +29,7 @@ jobs:
           git remote set-url origin git@github.com:christ972/android_challenge.git  # Utilisation de SSH
 
       - name: Pull latest changes
-        run: |
-          git pull origin main  # ou votre branche par défaut
+        run: git pull origin main  # ou votre branche par défaut
 
       - name: Add comment
         run: |
@@ -43,28 +42,9 @@ jobs:
           git commit -m "Add temporary comment"
 
       - name: Pull latest changes again
-        run: |
-          git pull origin main  # ou votre branche par défaut
+        run: git pull origin main  # ou votre branche par défaut
 
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Remove comment
         run: |
-          sed -i '/Temporary comment/d' file.txt  # Ajustez le chemin et le fichier en conséquence
+          git push origin main  # ou votre branche par défaut
 
-      - name: Commit removal
-        run: |
-          git add .
-          git commit -m "Remove temporary comment"
-
-      - name: Pull latest changes again
-        run: |
-          git pull origin main  # ou votre branche par défaut
-
-      - name: Push removal
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
