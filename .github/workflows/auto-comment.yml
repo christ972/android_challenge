@@ -49,7 +49,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Remove comment
         run: |
@@ -67,4 +67,4 @@ jobs:
       - name: Push removal
         uses: ad-m/github-push-action@v0.6.0
         with:
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
