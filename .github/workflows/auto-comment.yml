@@ -24,8 +24,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name 'Your Name'  # Remplacez par votre nom
-          git config --global user.email 'your.email@example.com'  # Remplacez par votre email
+          git config --global user.name 'christ972'  # Remplacez par votre nom
+          git config --global user.email 'hisciences331@gmail.com'  # Remplacez par votre email
           git remote set-url origin git@github.com:christ972/android_challenge.git  # Utilisation de SSH
 
       - name: Pull latest changes
