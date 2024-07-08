@@ -41,8 +41,11 @@ jobs:
           git add .
           git commit -m "Add temporary comment"
 
-      - name: Pull latest changes again
-        run: git pull origin main  # ou votre branche par défaut
+      - name: Fetch latest changes again
+        run: git fetch origin main  # ou votre branche par défaut
+
+      - name: Merge changes
+        run: git merge origin/main  # ou votre branche par défaut
 
       - name: Push changes
         run: |
