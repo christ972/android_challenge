@@ -2,7 +2,7 @@ name: Auto Comment Workflow
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Exécute le job toutes les heures
+    - cron: '0 0 * * *'  # Exécute le job toutes les heures
   push:
     branches:
       - main  # ou votre branche par défaut
